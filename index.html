@@ -9,16 +9,14 @@
 <body>
     <main class="System">
         <h1>Student Marks Calculator</h1>
-        <section class="add">
-            <h2>Add Subjects</h2>
-            <input id="subjectInput" placeholder="Enter your Subject Name">
-            <input id="marksInput" type="number" placeholder="Enter Marks">
-            <button id="addSubject">Add Subject</button>       
-        </section>
-        <section class="display">
-            <div id="subjectList"></div>
-            <button id="calculateResult">Calculate Result</button>
-            <div id="result"></div>
+        <section class="container">
+        <input id="A1" placeholder="Enter your Assignment 01 marks (out of 25)">
+        <input id="A2" placeholder="Enter your Assignment 02 marks (out of 25)">
+        <input id="A3" placeholder="Enter your Assignment 03 marks (out of 25)">
+        <input id="final" placeholder="Enter your Final sem Marks (out of 100)">
+        <button onclick="calculate()">Calculate 📈</button>
+
+        <div id="result"></div>
         </section>
     </main>
     <script src="script.js"></script>
