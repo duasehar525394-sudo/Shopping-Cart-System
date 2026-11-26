@@ -1,99 +1,61 @@
-let subjects = [];
 
-let subjectInput=document.getElementById("subjectInput");
-let marksInput=document.getElementById("marksInput");
-let subjectList=document.getElementById("subjectList");
-let addSubject=document.getElementById("addSubject");
+function calculate(){
+    let A1 = Number(document.getElementById("A1").value);
+    let A2 = Number(document.getElementById("A2").value);
+    let A3 = Number(document.getElementById("A3").value);
+    let final = Number(document.getElementById("final").value);
 
-addSubject.addEventListener("click", () => {
-   let subjectName = subjectInput.value ; 
-   let marks = Number(marksInput.value) ;
+    let highest = Math.max(A1,A2,A3,final);
+    let lowest = Math.min(A1,A2,A3,final);
+    let sum = A1 + A2 + A3 + final; 
+    let percentage = (sum/175 * 100);
 
-   if(subjectName === ""|| marksInput.value === ""){
-    console.log("Value Not Found");
-    return
-   }; 
-   
-   if(marks < 0 || marks > 100){
-    alert("Marks Must be between 0 and 100");
-    return
-   }
-
-   subjects.push({
-    name: subjectName,
-    marks: marks
-});
-
-   subjectList.innerHTML += "<p>" + subjectName + " - " + marks + "</p>";  
-   console.log(subjects);
-});
-
-let calculateResult = document.getElementById("calculateResult");
-let result = document.getElementById("result");
-
-calculateResult.addEventListener("click", function() {
-
-   if (subjects.length === 0) {
-    alert("Please add subjects first");
-    return;
-}
- 
-  let total = 0;
-  let highest = subjects[0].marks;
-                   let lowest = subjects[0].marks;
-
-    for (let i = 0; i < subjects.length; i++) {
-
-    total = total + subjects[i].marks;
-     console.log(total);
-
-     if (subjects[i].marks > highest) {
-    highest = subjects[i].marks;
-}
-
-if (subjects[i].marks < lowest) {
-    lowest = subjects[i].marks;
-}
-    }
-
-
-    let percentage = total / subjects.length;
-    console.log(percentage);
-
-    result.innerHTML = "Total Marks: " + total +
-                   "<br>Percentage: " + percentage + "%";
-
-    result.innerHTML += "<br>Highest Marks: " + highest;
-result.innerHTML += "<br>Lowest Marks: " + lowest;               
-
-                   let grade;
-                   if (percentage >= 100) {
+     let grade;
+                   if (percentage >= 80) {
                     grade = "A";
                    }
-                   else if (percentage >= 79) {
+                   else if (percentage >= 70) {
                     grade = "B";
                    } 
-                   else if (percentage >= 59) {
+                   else if (percentage >= 60) {
                     grade = "C";
                    } 
+                   else if(percentage >= 50){
+                    grade = "D"
+                   }
                    else {
-                    grade = "Fail";
+                    grade = "F";
                    }
 
-                   console.log(grade);
-                   result.innerHTML += "<br>Grade: " + grade;              
-      
-                   let status;
+    let status;
                    if(percentage >= 40){
                     status = "Pass";
                    }
 
                    else{
                     status ="Fail";
-                   }
+                   }       
+                   
+document.getElementById("result").innerHTML =
+    "Total Marks: " + sum;
 
-                   console.log(status);
-                   result.innerHTML += "<br>Status: " + status;
-            
-});
+document.getElementById("result").innerHTML +=
+    "<br>Percentage: " + percentage + "%";
+
+document.getElementById("result").innerHTML +=
+    "<br>Grade: " + grade;
+
+document.getElementById("result").innerHTML +=
+    "<br>Status: " + status;
+
+document.getElementById("result").innerHTML +=
+    "<br>Highest Marks: " + highest;
+
+document.getElementById("result").innerHTML +=
+    "<br>Lowest Marks: " + lowest;
+
+ }
+
+
+
 
